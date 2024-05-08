@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copia Tinder</title>
+<style>
+
+body{
+    margin: 0px;
+    background-color: black;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: Lexend Deca;
+}
+
+
+.card-group, .card, .card-groups{
+    aspect-ratio: 5/7;
+    transition: transform 0.8s ease-in-out;
+
+}
+
+.card-group, .big-card, .card-groups{
+    width: 30vmin;
+}
+
+.card-group{
+    position: absolute;
+}
+
+.card{
+    background-color: white;
+    position: absolute;
+    transition: transform 0.8s ease-in-out;
+
+}
+
+.big-card{
+    width: 30vmin;
+    border-radius: 1vmin;
+
+    
+}
+
+.little-card{
+    width: 12vmin;
+    aspect-ratio: 5/7;
+    border-radius: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+
+/*PESSOA 1 */
+.person{
+    display: flex;
+    align-items: end;
+    height: 90%;
+    width: 90%;    
+    background-size: 100% 100%;
+    border-radius: 2vmin;
+}
+
+.big-card:nth-child(2){
+    transform: translate(-10%,0%) rotate(-1deg);
+    display: grid;
+    grid-template-rows: 20% 1fr;
+    justify-content: start;
+
+}
+.big-card:nth-child(2) *{
+    margin: 0.7em;
+}
+
+
+
+
+.big-card:nth-child(4){
+    rotate: (2deg);
+    display: grid;
+    grid-template-rows: 30% 1fr;
+    justify-content: start;
+}
+
+.big-card:nth-child(4) *{
+    margin: 0.5em;
+}
+
+
+
+
+.big-card:nth-child(6){
+    transform: translate(-6%,0%) rotate(-3deg);
+    background-size: 100% 100%;
+}
+
+.big-card:nth-child(8){
+    transform: translate(10%,3%) rotate(5deg); 
+    display: grid;
+    grid-template-rows: 20% 1fr;
+    place-items: center;   
+}
+.big-card:nth-child(8) *{
+    margin: 1em;
+}
+
+
+.little-card:nth-child(1){
+    background-size: 100% 100%;
+}
+
+
+.little-card:nth-child(3){
+    background-size: 100% 100%;
+}
+
+.little-card:nth-child(5){
+    background-size: 100% 100%;
+}
+
+
+.little-card:nth-child(7){
+    background-size: 100% 100%;
+}
+
+
+
+
+
+.card-swiper-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10vmin;
+}
+.card-swiper-buttons > button{
+    font-size: 2.5vmin;
+    border: 0.6vmin solid rgb(200,200,200);
+    border-radius: 100%;
+    color: white;
+    background-color: transparent;
+    height: 8vmin;
+    width: 8vmin;
+    cursor: pointer;
+    font-family: Lexend Deca;
+
+}
+
+#love-button{
+    color: blue;
+    border: 0.6vmin solid blue;
+
+}
+
+
+
+
+.card-group:hover > .big-card:nth-child(2){
+    transform: translate(-75%, 16%) rotate(-24deg);
+}
+
+.card-group:hover > .big-card:nth-child(4){
+    transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.card-group:hover > .big-card:nth-child(6){
+    transform: translate(25%, 8%) rotate(8deg);
+
+}
+
+.card-group:hover > .big-card:nth-child(8){
+    transform: translate(75%, 16%) rotate(24deg);
+}
+
+
+
+
+.card-group:hover > .little-card:nth-child(1){
+    transform: translate(200%, -160%) rotate(-15deg);
+}
+
+.card-group:hover > .little-card:nth-child(3){
+    transform: translate(160%, 170%) rotate(15deg);
+}
+
+
+.card-group:hover > .little-card:nth-child(5){
+    transform: translate(-200%, -170%) rotate(15deg);
+}
+
+
+.card-group:hover > .little-card:nth-child(7){
+    transform: translate(-280%, 140%) rotate(-15deg);
+}
+
+.selected > .big-card:nth-child(2){
+    transform: translate(-180%,0%);
+}
+.selected:hover > .big-card:nth-child(2){
+    transform: translate(-180%,0%);
+}
+
+.selected > .big-card:nth-child(4){
+    transform: translate(-60%,0%);
+}
+.selected:hover > .big-card:nth-child(4){
+    transform: translate(-60%,0%);
+}
+
+
+.selected > .big-card:nth-child(6){
+    transform: translate(60%,0%);
+}
+.selected:hover > .big-card:nth-child(6){
+    transform: translate(60%,0%);
+}
+
+
+
+.selected > .big-card:nth-child(8){
+    transform: translate(180%,0%);
+}
+.selected:hover > .big-card:nth-child(8){
+    transform: translate(180%,0%);
+}
+
+
+.selected > .little-card:nth-child(1){
+    transform: translate(200%, -230%);
+}
+.selected:hover > .little-card:nth-child(1){
+    transform: translate(200%, -230%);
+}
+
+
+
+.selected > .little-card:nth-child(3){
+    transform: translate(200%, 140%);
+}
+.selected:hover > .little-card:nth-child(3){
+    transform: translate(200%, 140%);
+}
+
+
+.selected > .little-card:nth-child(5){
+    transform: translate(-300%, -230%);
+}
+.selected:hover > .little-card:nth-child(5){
+    transform: translate(-300%, -230%);
+}
+
+
+.selected > .little-card:nth-child(7){
+    transform: translate(-300%, 140%);
+}
+.selected:hover > .little-card:nth-child(7){
+    transform: translate(-300%, 140%);
+}
+
+
+.unknown{
+    transform: scale(0);
+}
+
+.after{
+    transform: translate(50%) scale(0.0000000000000001);
+}
+.becoming-active{
+    transform: translate(-50%) scale(0.0000000000000001);
+    transition: none;
+}
+
+
+.active{
+    transform: scale(1);
+}
+
+
+
+.after > .big-card:nth-child(2){
+    transform: translate(-75%, 16%) rotate(-24deg);
+}
+
+.after > .big-card:nth-child(4){
+    transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.after > .big-card:nth-child(6){
+    transform: translate(25%, 8%) rotate(8deg);
+
+}
+
+.after > .big-card:nth-child(8){
+    transform: translate(75%, 16%) rotate(24deg);
+}
+
+
+.goLeft{
+    transform: translate(-50%) scale(0.0000000000000001);
+}
+
+.goLeft > .big-card:nth-child(2){
+    transform: translate(-75%, 16%) rotate(-24deg);
+}
+
+.goLeft > .big-card:nth-child(4){
+    transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.goLeft > .big-card:nth-child(6){
+    transform: translate(25%, 8%) rotate(8deg);
+
+}
+
+.goLeft > .big-card:nth-child(8){
+    transform: translate(75%, 16%) rotate(24deg);
+}
+
+.becoming-inactive{
+    transform: translate(50%) scale(0.0000000000000001);
+    transition: none;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="card-swiper">
+    <div class="card-groups">
+
+            <div class="card-group index1 active" onclick="seleciona('.index1')" >
+
+            <div class="little-card card" style="background-image: url(/pessoa1/littleCard1.jpg)"></div>
+            <div class="big-card card">
+                <h1>Sobre Mim</h1>
+                <p>Oi! Sou o Jhonn Jhonssons, um amante de rock e flores. Cresci entre acordes enérgicos de rock'n'roll e a beleza delicada das flores do jardim da minha avó. Adoro a intensidade da música e a suavidade das pétalas. Se você quer compartilhar aventuras musicais e momentos tranquilos no meio da natureza, estou aqui. Vamos nos conhecer melhor?</p>
+
+            </div>
+            <div class="little-card card" style="background-image: url(/pessoa1/littleCard2.jpg)"></div>
+
+            <div class="big-card card">
+                <h1>Coisas que gosto</h1>
+                <ul>
+                    <li>Rock</li>
+                    <li>Shows</li>
+                    <li>Cachorros</li>
+                    <li>Hamburguer</li>
+                    <li>Carros</li>
+                    <li>Flores</li>
+                </ul>
+            </div>
+
+            <div class="little-card card "style="background-image: url(/pessoa1/littleCard3.jpg)"></div>
+
+            <div class="big-card card" style="background-image: url(/pessoa1/profile.jpg)"></div>
+
+            <div class="little-card card" style="background-image: url(/pessoa1/littleCard4.jpg)"></div>
+
+            <div class="big-card card">
+                <h1>Jhonny Jhonssons</h1>
+                <div class="person" style="background-image: url(/pessoa1/person.jpg)">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-group index2 unknown" onclick="seleciona('.index2')" >
+
+            <div class="little-card card" style="background-image: url(/pessoa2/littleCard1.jpg)"></div>
+            <div class="big-card card">
+                <h1>Sobre Mim</h1>
+                <p>"Oi! Eu sou a Vanessa DiCaprio, uma amante de joias, gatos, pássaros, rinocerontes, cavalos e lagartos. Desde criança, me fascinam tanto as joias reluzentes quanto a diversidade da vida selvagem. Sou aquela pessoa que vai de uma tarde admirando joias a uma caminhada no parque para observar pássaros. Eai vamos nos conhecer melhor?"</p>
+
+            </div>
+            <div class="little-card card" style="background-image: url(/pessoa2/littleCard2.jpg)"></div>
+
+            <div class="big-card card">
+                <h1>Coisas que gosto</h1>
+                <ul>
+                    <li>Gatos</li>
+                    <li>Joais</li>
+                    <li>Passaros</li>
+                    <li>Lagartos</li>
+                    <li>Rinocerontes</li>
+                    <li>Cavalos</li>
+                </ul>
+            </div>
+
+            <div class="little-card card "style="background-image: url(/pessoa2/littleCard3.jpg)"></div>
+
+            <div class="big-card card" style="background-image: url(/pessoa2/profile.jpg)"></div>
+
+            <div class="little-card card" style="background-image: url(/pessoa2/littleCard4.jpg)"></div>
+
+            <div class="big-card card">
+                <h1>Vanessa Dicaprio</h1>
+                <div class="person" style="background-image: url(/pessoa2/person.jpg)">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-group index3 unknown" onclick="seleciona('.index3')" >
+
+            <div class="little-card card" style="background-image: url(/pessoa3/littleCard1.jpg);"></div>
+            <div class="big-card card">
+                <h1>Sobre Mim</h1>
+                <p>"Olá! Sou o Gabriel Ferandes, um aficionado por fotografia, café, viagens, literatura e escalada. Desde sempre, fui cativado pelo poder das imagens, pelo aroma do café fresco, pelas histórias de lugares distantes, pelas páginas de um bom livro e pela sensação de liberdade ao alcançar o topo de uma montanha. Vamos nos conectar?"</p>
+
+            </div>
+            <div class="little-card card" style="background-image: url(/pessoa3/littleCard2.jpg);"></div>
+
+            <div class="big-card card">
+                <h1>Coisas que gosto</h1>
+                <ul>
+                    <li>Fotoggrafia</li>
+                    <li>Café</li>
+                    <li>Viagens</li>
+                    <li>Literatura</li>
+                    <li>Escalada</li>
+                    <li>Gatos</li>
+                </ul>
+            </div>
+
+            <div class="little-card card" style="background-image: url(/pessoa3/littlecard3.jpg);"></div>
+
+            <div class="big-card card" style="background-image: url(/pessoa3/profile.jpg);"></div>
+
+            <div class="little-card card" style="background-image: url(/pessoa3/littlecard4.jpg);"></div>
+
+            <div class="big-card card">
+                <h1>Gabriel Fernades</h1>
+                <div class="person" style="background-image: url(/pessoa3/person.jpg);">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-swiper-buttons">
+        <button id="hate-buttom" onclick="handleHateClick()">Hate</button>
+        <button id="love-button" onclick="handleLoveClick()">Love</button>
+        
+    </div>
+
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@200;300;400;500;600;700&display=swap');
+</style>
+
+<script>
+    let big = false;
+    let activeIndex = 1;
+
+    const groups = document.querySelectorAll('.card-group');
+
+    function seleciona(cardsClass){
+        let cards = document.querySelector(cardsClass)
+        if(big){
+            cards.classList.remove('selected')
+            big = false;
+        }
+        else{
+            cards.classList.add('selected')
+            big = true;
+        }
+    };
+
+    function handleLoveClick(){
+        let nextLoveGroupIndex = activeIndex+1;
+    //confere o index ativo e caso este +1 seja menor que o limite define o proximo grupo como activeIndex +1
+        if(activeIndex+1 > groups.length){
+            nextLoveGroupIndex = 1;
+        }
+
+        if(activeIndex == 1){
+            previousIndex = 3;
+        }
+ 
+
+        //pega o grupo  ativo e o proximo grupo os selecionando pelo atributo clase presente neles
+        const currentGroup = document.querySelector('.index' + activeIndex), 
+        nextLoveGroup = document.querySelector('.index' + nextLoveGroupIndex);
+        //grupo ativo recebe a classe de after
+        
+        currentGroup.classList.add('after');
+        currentGroup.classList.remove('active');
+
+
+        if(currentGroup.classList.contains('selected')){
+            currentGroup.classList.remove('selected');
+        }
+
+        //confere se o proximo grupo tem after ou unknown e remove eles
+        if(nextLoveGroup.classList.contains('unknown')){
+            nextLoveGroup.classList.remove('unknown');
+        }
+        if(nextLoveGroup.classList.contains('after')){
+            nextLoveGroup.classList.remove('after');
+        }
+
+        if(nextLoveGroup.classList.contains('goLeft')){
+            nextLoveGroup.classList.remove('goLeft');
+        }
+
+        nextLoveGroup.classList.add('becoming-active');
+
+        setTimeout(() =>{
+            nextLoveGroup.classList.remove('becoming-active');
+            nextLoveGroup.classList.add('active');
+            activeIndex = nextLoveGroupIndex;
+
+        })
+
+        //prximo grupo recebe a classe de active
+
+
+
+
+    };
+
+
+    function handleHateClick(){
+        let nextHateGroupIndex = activeIndex+1;
+    //confere o index ativo e caso este +1 seja menor que o limite define o proximo grupo como activeIndex +1
+        if(activeIndex+1 > groups.length){
+            nextHateGroupIndex = 1;
+        }
+
+  
+
+        //pega o grupo  ativo e o proximo grupo os selecionando pelo atributo clase presente neles
+        const currentGroup = document.querySelector('.index' + activeIndex), 
+        nextHateGroup = document.querySelector('.index' + nextHateGroupIndex);
+        //grupo ativo recebe a classe de after
+        
+        currentGroup.classList.add('goLeft');
+        currentGroup.classList.remove('active');
+
+
+        if(currentGroup.classList.contains('selected')){
+            currentGroup.classList.remove('selected');
+        }
+
+        //confere se o proximo grupo tem after ou unknown e remove eles
+        if(nextHateGroup.classList.contains('unknown')){
+            nextHateGroup.classList.remove('unknown');
+        }
+        if(nextHateGroup.classList.contains('after')){
+            nextHateGroup.classList.remove('after');
+        }
+        if(nextHateGroup.classList.contains('goLeft')){
+            nextHateGroup.classList.remove('goLeft');
+        }
+
+        nextHateGroup.classList.add('becoming-inactive');
+
+        setTimeout(() =>{
+            nextHateGroup.classList.remove('becoming-inactive');
+            nextHateGroup.classList.add('active');
+            activeIndex = nextHateGroupIndex;
+
+        })
+
+        //prximo grupo recebe a classe de active
+
+
+
+
+    }
+
+
+</script>
+    
+</body>
+</html>
