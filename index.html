@@ -7,8 +7,16 @@
 <style>
 
 body{
+    --bgCartas:#f0debb;
+    --bg:#091c1a;
+    --colorText: #16453f;
+    --loveButton: #a8527b;
+    
+
+
+
     margin: 0px;
-    background-color: black;
+    background-color: var(--bg);
     height: 100vh;
     display: grid;
     place-items: center;
@@ -31,9 +39,10 @@ body{
 }
 
 .card{
-    background-color: white;
+    background-color: var(--bgCartas);
     position: absolute;
     transition: transform 0.8s ease-in-out;
+    color: var(--colorText);
 
 }
 
@@ -138,9 +147,9 @@ body{
 }
 .card-swiper-buttons > button{
     font-size: 2.5vmin;
-    border: 0.6vmin solid rgb(200,200,200);
+    border: 0.6vmin solid var(--bgCartas);
     border-radius: 100%;
-    color: white;
+    color: var(--bgCartas);
     background-color: transparent;
     height: 8vmin;
     width: 8vmin;
@@ -150,8 +159,8 @@ body{
 }
 
 #love-button{
-    color: blue;
-    border: 0.6vmin solid blue;
+    color: var(--loveButton);
+    border: 0.6vmin solid var(--loveButton);
 
 }
 
